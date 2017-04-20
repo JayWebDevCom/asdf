@@ -1,8 +1,10 @@
 require_relative 'station'
-require 'date'
+require_relative 'journey_log'
+
+#understands
 
 class Oystercard
-  attr_reader :balance, :journeys, :journey, :num_journies
+  attr_reader :balance, :journeys, :journey
 
   BALANCE_LIMIT = 90
   MINIMUM_FARE = 1
@@ -12,7 +14,7 @@ class Oystercard
     @balance = 0
     @journeys = {}
     @journey = nil
-    @num_journies = 0
+    @journey_log = JourneyLog.new
   end
 
   def top_up(amount)
@@ -32,8 +34,7 @@ class Oystercard
 
   def touch_out(end_station)
     charge_penalty_out(end_station) unless in_journey?
-    @num_journies += 1
-    deduct(fare)
+    deduct
     record_journey(end_station)
   end
 
@@ -45,10 +46,7 @@ class Oystercard
 
   def record_journey(end_station)
     @journey.complete(end_station)
-    @journeys[ num_journies ] = [
-      journey.entry_station, journey.entry_zone,
-      journey.exit_station, journey.exit_zone
-    ]
+    @journey_log.add(@journey)
     @journey = nil
   end
 
@@ -56,8 +54,8 @@ class Oystercard
     @balance < MINIMUM_FARE
   end
 
-  def deduct(amount)
-    @balance -= amount
+  def deduct
+    @balance -= fare
   end
 
   def charge_penalty_in

@@ -97,7 +97,7 @@ describe Oystercard do
       card.top_up(30)
       allow(station).to receive_messages(:name => "Old Street", :zone => 1)
       allow(journey).to receive_messages(
-      :entry_station => "Old Street", :entry_zone => 1, 
+      :entry_station => "Old Street", :entry_zone => 1,
       :exit_station => "Aldgate East", :exit_zone => 3)
       allow(exit_station).to receive_messages(:name => "Aldgate East", :zone => 3)
       card.touch_in(station)
@@ -115,14 +115,6 @@ describe Oystercard do
     it 'sets entry station to nil' do
       card.touch_out(station)
       expect(card.in_journey?).to be false
-    end
-
-    it 'records entry and exit stations as one journey' do
-      allow(exit_station).to receive_messages(:name => "Aldgate East", :zone => 3)
-      card.touch_in(station)
-      card.touch_out(exit_station)
-      hash = { card.num_journies => [ journey.entry_station, journey.entry_zone, journey.exit_station, journey.exit_zone ] }
-      expect(card.journeys).to eq hash
     end
 
     it 'charges penalty when touching out without touching in' do
