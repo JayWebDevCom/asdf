@@ -7,8 +7,7 @@ class JourneyLog
   end
 
   def add(journey)
-    key = number_of_journies + 1
-    @history[key] = journey
+    @history[ number_of_journies + 1 ] = journey
   end
 
   def number_of_journies
