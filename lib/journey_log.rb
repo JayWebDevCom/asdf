@@ -3,16 +3,16 @@ class JourneyLog
   attr_accessor :history
 
   def initialize
-    @history = []
+    @history = { 0 => '' }
   end
 
   def add(journey)
-    @history << journey
+    key = number_of_journies + 1
+    @history[key] = journey
   end
 
-
   def number_of_journies
-    history.size
+    history.keys.max
   end
 
 end

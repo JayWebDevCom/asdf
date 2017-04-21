@@ -12,7 +12,7 @@ describe JourneyLog do
 
     it 'records journey information' do
       journey_log.add(journey)
-      expect(journey_log.history).to include journey
+      expect(journey_log.history.values).to include journey
     end
 
   end
