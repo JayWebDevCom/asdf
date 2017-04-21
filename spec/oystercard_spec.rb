@@ -1,6 +1,4 @@
 require 'oystercard'
-require 'journey'
-require 'date'
 
 describe Oystercard do
 
@@ -13,10 +11,6 @@ describe Oystercard do
 
     it 'with a balance of 0' do
       expect(card.balance).to eq 0
-    end
-
-    it 'with no journeys' do
-      expect(card.journeys).to be_empty
     end
 
   end

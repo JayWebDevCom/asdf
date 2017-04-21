@@ -85,7 +85,7 @@
         1,
         null,
         1,
-        17,
+        16,
         null,
         null,
         1,
@@ -101,21 +101,15 @@
       ],
       "/Users/Jaiye/Documents/Sites/Ruby/precourse/Projects/oystercard_jaiye_tim/spec/oystercard_spec.rb": [
         1,
-        1,
-        1,
         null,
         1,
         null,
-        16,
+        15,
         11,
         9,
         5,
         null,
         1,
-        null,
-        1,
-        1,
-        null,
         null,
         1,
         1,
@@ -241,10 +235,9 @@
         1,
         null,
         1,
-        15,
-        15,
-        15,
-        15,
+        14,
+        14,
+        14,
         null,
         null,
         1,
@@ -285,7 +278,7 @@
         null,
         null,
         1,
-        35,
+        37,
         null,
         null,
         1,
@@ -333,6 +326,6 @@
         null
       ]
     },
-    "timestamp": 1492727762
+    "timestamp": 1492754447
   }
 }

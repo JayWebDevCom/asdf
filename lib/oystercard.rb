@@ -4,7 +4,7 @@ require_relative 'journey_log'
 #understands
 
 class Oystercard
-  attr_reader :balance, :journeys, :journey
+  attr_reader :balance, :journey
 
   BALANCE_LIMIT = 90
   MINIMUM_FARE = 1
@@ -12,7 +12,6 @@ class Oystercard
 
   def initialize
     @balance = 0
-    @journeys = {}
     @journey = nil
     @journey_log = JourneyLog.new
   end
@@ -60,11 +59,11 @@ class Oystercard
 
   def charge_penalty_in
     @journey = nil
-    @balance -= fare
+    deduct
   end
 
   def charge_penalty_out(station)
-    @balance -= fare
+    deduct
     @journey = Journey.new(station.name, station.zone)
   end
 
